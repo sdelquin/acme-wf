@@ -15,12 +15,7 @@ WF_PASSWORD = config('WF_PASSWORD')
 
 def run_cmd(cmd):
     print(crayons.white(cmd))
-    try:
-        subprocess.run(cmd, shell=True, check=True, capture_output=True)
-    except subprocess.CalledProcessError as err:
-        print(crayons.red(err.stderr))
-    else:
-        print(crayons.green('Done!'))
+    subprocess.run(cmd, shell=True)
 
 
 for domain, cert in [_.split('|') for _ in DOMAINS]:
@@ -30,4 +25,4 @@ for domain, cert in [_.split('|') for _ in DOMAINS]:
     print(crayons.magenta('Install cert: '), end='')
     run_cmd(f'{ACME_SH_PATH} --install-cert -d {domain} \
     --reloadcmd "WF_SERVER={WF_SERVER} WF_USER={WF_USER} \
-    WF_PASSWORD={WF_PASSWORD} WF_CERT_NAME={cert} {ACME_WF_PATH}"')
+    WF_PASSWORD={WF_PASSWORD} WF_CERT_NAME={cert} python2.7 {ACME_WF_PATH}"')
