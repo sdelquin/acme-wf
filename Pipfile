@@ -11,6 +11,7 @@ crayons = "*"
 "flake8" = "*"
 yapf = "*"
 rope = "*"
+"fabric3" = "*"
 
 [requires]
 python_version = "3.7"
