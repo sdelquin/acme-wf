@@ -50,3 +50,16 @@ Set the proper values on file `.env`. Take into account that `DOMAINS` should be
 $ pipenv install
 $ python main.py
 ~~~
+
+## Crontab
+
+Master script can be launched *each month* to renovate the certificates:
+
+~~~console
+$ crontab -e
+...
+~~~
+
+~~~bash
+* * * */1 * ~/acme_wf/run.sh > ~/logs/user/acme_wf/acme_wf.log 2>&1
+~~~
