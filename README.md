@@ -35,3 +35,18 @@ RewriteRule (.*) https://%1%{REQUEST_URI} [L,R=301]
 - [Link to configuration](https://my.webfaction.com/websites).
 - Only HTTP requests.
 - Include into *Domains* all the domains you want to validate. Domains must be in the form `http://...`
+
+## Assumptions
+
+The corresponding SSL certificates are already loaded in the [SSL certificates section of Webfaction](https://my.webfaction.com/ssl-certificates).
+
+## Usage
+
+Set the proper values on file `.env`. Take into account that `DOMAINS` should be a string in the form:
+
+`'<domain>|<cert_name>, <domain>|<cert_name>, ...'`
+
+~~~console
+$ pipenv install
+$ python main.py
+~~~
